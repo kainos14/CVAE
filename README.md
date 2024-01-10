@@ -15,7 +15,7 @@
 
 ## Codebase Overview
 - We note that:
-  - <CVAE.ipynb> for the proposed DCVAE model.
+  - <CVAE.py> for the proposed DCVAE model.
 
 
 Framework uses Tensorflow 2+, tensorflow_addons, numpy, pandas, matplotlib, scikit-learn.  
