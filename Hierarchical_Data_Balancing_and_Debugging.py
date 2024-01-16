@@ -1,22 +1,18 @@
-# Import libraries that will be needed for the lab
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import Image
 import os, datetime
-
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import roc_curve, auc, confusion_matrix
 from sklearn.cluster import KMeans
-
 import tensorflow as tf
 from tensorflow.keras import optimizers
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, Dropout
 from tensorflow.keras.utils import plot_model
-get_ipython().run_line_magic('load_ext', 'tensorboard')
 import random
 import pandas as pd
 import numpy as np
@@ -49,9 +45,8 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-features = pd.read_csv("C:/Users/GC/Feature_Extract_Fall_Detection/random_extracted_features.csv", index_col = 0)
+features = pd.read_csv("C:/Users/GC/Feature_Extract_Fall_Detection/Extracted_features.csv", index_col = 0)
 features['activity'].value_counts()
-
 
 plt.figure(figsize=(15, 8))
 features['activity'].value_counts().sort_index().plot(kind = "bar", color='blue', title = "Training Examples by Activity Type")
@@ -63,9 +58,6 @@ features['activity'] = label.fit_transform(features['activity'])
 features.head()
 
 features['activity'].value_counts()
-
-ADL_NUM = 4600
-FALL_NUM = 4600
 
 D01 = features[features['activity']==0].head(ADL_NUM).copy()
 D02 = features[features['activity']==15].head(ADL_NUM).copy()
@@ -93,7 +85,7 @@ F02 = features[features['activity']==32].head(FALL_NUM).copy()
 F03 = features[features['activity']==31].head(FALL_NUM).copy()
 F04 = features[features['activity']==30].head(FALL_NUM).copy()
 F05 = features[features['activity']==29].head(FALL_NUM).copy()
-F06 = features[features['activity']==29].head(FALL_NUM).copy()
+F06 = features[features['activity']==28].head(FALL_NUM).copy()
 F07 = features[features['activity']==27].head(FALL_NUM).copy()
 F08 = features[features['activity']==26].head(FALL_NUM).copy()
 F09 = features[features['activity']==24].head(FALL_NUM).copy()
