@@ -16,7 +16,7 @@
 ## Codebase Overview
 - We note that:
   - <CVAE.py> for the proposed DCVAE model.
-
+  - <Hierarchical_Data_Balancing_and_Debugging.py> for the proposed 'Hierarchical Data Balancing' and 'Data Debugging' techniques.
 
 Framework uses Tensorflow 2+, tensorflow_addons, numpy, pandas, matplotlib, scikit-learn.  
   
