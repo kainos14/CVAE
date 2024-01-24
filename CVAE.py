@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import pandas as pd
 import numpy as np
 import os
@@ -63,6 +60,9 @@ sns.set(font_scale=1)
 
 No_noise_df = df_total.copy()
 
+# In the SisFall dataset, four features, ADX_y_acc_mean, ADX_y_acc_max, MMA_y_acc_mean, and MA_y_acc_max, were selected in feature selection, 
+# and the noise was added to the four features. For other datasets, we need to change that part.
+
 noise_factor = 0.5
 df['ADX_y_acc_mean'] = df['ADX_y_acc_mean'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['ADX_y_acc_max'] = df['ADX_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
@@ -77,11 +77,11 @@ X_train.shape, X_test.shape
 X_train2, X_test2 = train_test_split(No_noise_df, test_size=0.1, random_state=42)
 X_train2.shape, X_test2.shape
 
-# Normal = 0 Fall = 1
+# Normal = 0 / Fall = 1
 normal = X_train[X_train['activity'] == 0]
 normal.shape
 
-# Normal = 0 Fall = 1
+# Normal = 0 / Fall = 1
 normal2 = X_train2[X_train2['activity'] == 0]
 normal.shape
 
@@ -108,7 +108,6 @@ from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
 #scaler = StandardScaler()
-
 scaler.fit(X_train_ft)
 scaler.fit(X_test)
 
@@ -294,7 +293,6 @@ plt.ylabel('Distribution')
 plt.axhline(y= 0.1, xmin=0.01, xmax=1,dashes=(5,5), c='g')
 plt.xticks(rotation=90)
 plt.show()
-
 
 threshold =  0.10
 
