@@ -74,7 +74,7 @@ df['MMA_y_acc_max'] = df['MMA_y_acc_max'] + noise_factor * np.random.normal(loc=
 X_train, X_test = train_test_split(df_total, test_size=0.1, random_state=42)
 X_train.shape, X_test.shape
 
-#No Noisy Data
+# Validation data without noisy
 X_train2, X_test2 = train_test_split(No_noise_df, test_size=0.1, random_state=42)
 X_train2.shape, X_test2.shape
 
@@ -85,7 +85,6 @@ normal2 = X_train2[X_train2['activity'] == 0]
 normal.shape
 
 # Data Debugging
-
 import seaborn as sns
 import matplotlib.pyplot as plt
 plt.figure(figsize=(10, 6))
@@ -138,7 +137,6 @@ def split_sequences(sequences, n_steps):
 		y.append(seq_y)
 	return np.array(X), np.array(y)
 
-# Merge train and test X/y data to apply sequence transformation function
 y_train_array = np.array(y_train)
 train_set = np.c_[X_train_ft, y_train_array]
 
