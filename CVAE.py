@@ -91,8 +91,8 @@ plt.figure(figsize=(10, 6))
 sns.scatterplot(data=normal2, x='ADX_y_acc_mean', y='MMA_y_acc_mean', hue='activity')
 plt.title('Seaborn Scatter Plot with Labels')
 plt.show()
-#Pre-calculating values by Exploratory Data Analysis (EDA)
 
+#Pre-calculating threadhold value by Exploratory Data Analysis (EDA)
 normal = normal[(normal['ADX_y_acc_mean'] > -250)]
 normal2 = normal2[(normal2['ADX_y_acc_mean'] > -250)]
 
