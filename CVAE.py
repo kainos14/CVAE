@@ -258,10 +258,8 @@ def sampling(args):
 
 def vae_loss(inputs, decoded):
    
-    #xent_loss = K.sum(K.binary_crossentropy(inputs, decoded), axis=1)
-    #xent_loss = 10 * K.mean(metrics.mean_squared_error(x_, x_decoded_mean_), axis=-1)
-    xent_loss = 10 * K.mean(K.square(inputs - decoded), axis=[1, 2])
-    kl_loss = - 0.5 * K.sum(1 + z_log_sigma - K.square(z_mean) - K.exp(z_log_sigma), axis=-1) 
+    xent_loss = K.sum(K.binary_crossentropy(inputs, decoded), axis=1)
+    xent_loss = 10 * K.mean(metrics.mean_squared_error(x_, x_decoded_mean_), axis=-1)
     return K.mean(xent_loss + kl_loss)
 
 # timesteps, features
