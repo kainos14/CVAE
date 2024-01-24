@@ -1,3 +1,7 @@
+
+# This source code is implemented for the SisFall dataset
+# Need to change the feature name in the source code to use other datasets.
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -44,6 +48,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+
+# Hierarchical Data Balancing 
 
 features = pd.read_csv("C:/Users/GC/Feature_Extract_Fall_Detection/Extracted_features.csv", index_col = 0)
 features['activity'].value_counts()
@@ -139,6 +145,10 @@ features = features.replace({'activity':20},1)
 features = features.replace({'activity':19},1)
 features = features.replace({'activity':33},1)
 features['activity'].value_counts()
+
+
+# Data Debugging
+# After EDA (Exploratory Data Analysis) using the function of Boxplot, select only the ADL portion that does not overlap with FALL.
 
 import matplotlib.pyplot as plt
 
