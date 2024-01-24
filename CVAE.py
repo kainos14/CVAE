@@ -1,3 +1,5 @@
+# This source is for the SisFall dataset. We only need to modify the related feature names for other data sets.
+
 import pandas as pd
 import numpy as np
 import os
@@ -35,51 +37,12 @@ from tensorflow.keras.layers import Flatten, Dense, Dropout, BatchNormalization
 from tensorflow.keras.layers import Conv2D, MaxPool2D
 from tensorflow.keras.optimizers import Adam
 
+#Pre-perform Hierarchical Data Balancing procedure
 features = pd.read_csv("C:/Users/GC/Extracted_Features_org.csv", index_col=0)
 
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder()
 features['activity']=le.fit_transform(features['activity'])
-
-# Hierarchical Data Balancing
-
-D01 = features[features['activity']=='D01'].head(dnum).copy()
-D02 = features[features['activity']=='D02'].head(dnum).copy()
-D03 = features[features['activity']=='D03'].head(dnum).copy()
-D04 = features[features['activity']=='D04'].head(dnum).copy()
-D05 = features[features['activity']=='D05'].head(dnum).copy()
-D06 = features[features['activity']=='D06'].head(dnum).copy()
-D07 = features[features['activity']=='D07'].head(dnum).copy()
-D08 = features[features['activity']=='D08'].head(dnum).copy()
-D09 = features[features['activity']=='D09'].head(dnum).copy()
-D10 = features[features['activity']=='D10'].head(dnum).copy()
-D11 = features[features['activity']=='D11'].head(dnum).copy()
-D12 = features[features['activity']=='D12'].head(dnum).copy()
-D13 = features[features['activity']=='D13'].head(dnum).copy()
-D14 = features[features['activity']=='D14'].head(dnum).copy()
-D15 = features[features['activity']=='D15'].head(dnum).copy()
-D16 = features[features['activity']=='D16'].head(dnum).copy()
-D17 = features[features['activity']=='D17'].head(dnum).copy()
-D18 = features[features['activity']=='D18'].head(dnum).copy()
-D19 = features[features['activity']=='D19'].head(dnum).copy()
-F01 = features[features['activity']=='F01'].head(fnum).copy()
-F02 = features[features['activity']=='F02'].head(fnum).copy()
-F03 = features[features['activity']=='F03'].head(fnum).copy()
-F04 = features[features['activity']=='F04'].head(fnum).copy()
-F05 = features[features['activity']=='F05'].head(fnum).copy()
-F06 = features[features['activity']=='F06'].head(fnum).copy()
-F07 = features[features['activity']=='F07'].head(fnum).copy()
-F08 = features[features['activity']=='F08'].head(fnum).copy()
-F09 = features[features['activity']=='F09'].head(fnum).copy()
-F10 = features[features['activity']=='F10'].head(fnum).copy()
-F11 = features[features['activity']=='F11'].head(fnum).copy()
-F12 = features[features['activity']=='F12'].head(fnum).copy()
-F13 = features[features['activity']=='F13'].head(fnum).copy()
-F14 = features[features['activity']=='F14'].head(fnum).copy()
-F15 = features[features['activity']=='F15'].head(fnum).copy()
-df = pd.DataFrame()
-df = pd.concat([df, D01, D02, D03, D04, D05, D06, D07, D08, D09, D10, D11, D12, D13, D14, D15, D16, D17, D18, D19])
-df = pd.concat([df, F01, F02, F03, F04, F05, F06, F07, F08, F09, F10, F11, F12, F13, F14, F15])
 
 # Feature Selection
 
@@ -102,8 +65,6 @@ sns.set(font_scale=1)
 # Denosing
 
 No_noise_df = df_total.copy()
-# In the SisFall dataset, four features, ADX_y_acc_mean, ADX_y_acc_max, MMA_y_acc_mean, and MA_y_acc_max, were selected in feature selection, 
-# and the noise was added to the four features. For other datasets, we need to change that part.
 
 noise_factor = 0.5
 df['ADX_y_acc_mean'] = df['ADX_y_acc_mean'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
@@ -133,6 +94,8 @@ plt.figure(figsize=(10, 6))
 sns.scatterplot(data=normal2, x='ADX_y_acc_mean', y='MMA_y_acc_mean', hue='activity')
 plt.title('Seaborn Scatter Plot with Labels')
 plt.show()
+#Pre-calculating values by Exploratory Data Analysis (EDA)
+
 normal = normal[(normal['ADX_y_acc_mean'] > -250)]
 normal2 = normal2[(normal2['ADX_y_acc_mean'] > -250)]
 
