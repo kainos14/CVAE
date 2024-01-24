@@ -63,9 +63,7 @@ plt.show()
 sns.set(font_scale=1)
 
 # Denosing
-
 No_noise_df = df_total.copy()
-
 noise_factor = 0.5
 df['ADX_y_acc_mean'] = df['ADX_y_acc_mean'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['ADX_y_acc_max'] = df['ADX_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
