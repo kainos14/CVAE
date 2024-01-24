@@ -319,7 +319,7 @@ plt.xlabel('epoch')
 plt.legend(['train', 'test'], loc='upper right');
 
 def flatten(X):
-    flattened_X = np.empty((X.shape[0], X.shape[2]))  # sample x features array.
+    flattened_X = np.empty((X.shape[0], X.shape[2]))  
     for i in range(X.shape[0]):
         flattened_X[i] = X[i, (X.shape[1]-1), :]
     return(flattened_X)
