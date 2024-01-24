@@ -122,8 +122,6 @@ X_train2.shape, X_test2.shape
 # Normal = 0 / Fall = 1
 normal = X_train[X_train['activity'] == 0]
 normal.shape
-
-# Normal = 0 / Fall = 1
 normal2 = X_train2[X_train2['activity'] == 0]
 normal.shape
 
@@ -140,16 +138,12 @@ normal2 = normal2[(normal2['ADX_y_acc_mean'] > -250)]
 
 y_train = normal['activity']
 X_train_normal_train = normal.drop(['activity'], axis=1)
-
 y_train2 = normal2['activity']
 X_train_normal_train2 = normal2.drop(['activity'], axis=1)
-
 y_test = X_test['activity']
 X_test = X_test.drop(['activity'], axis=1)
-
 y_test2 = X_test2['activity']
 X_test2 = X_test2.drop(['activity'], axis=1)
-
 X_train_ft = X_train_normal_train.values
 X_train_ft2 = X_train_normal_train2.values
 X_test = X_test.values
@@ -158,9 +152,7 @@ X_test2 = X_test2.values
 X_train_ft.shape, X_test.shape, y_train.shape, y_test.shape
 
 from sklearn.preprocessing import MinMaxScaler
-
-scaler = MinMaxScaler()
-#scaler = StandardScaler()
+scaler = StandardScaler()
 scaler.fit(X_train_ft)
 scaler.fit(X_test)
 
@@ -331,8 +323,7 @@ error = flatten(X_test) - flatten(valid_x_predictions)
 
 valid_mse = np.mean(np.power(flatten(X_test) - flatten(valid_x_predictions), 2), axis=1)
 
-error_df = pd.DataFrame({'reconstruction_error': valid_mse,
-                        'true_class': y_test})
+error_df = pd.DataFrame({'reconstruction_error': valid_mse,'true_class': y_test})
 error_df.describe()
 error_df['true_class'].value_counts()
 
@@ -385,7 +376,6 @@ auc_keras = auc(fpr_keras, tpr_keras)
 plt.figure(1)
 plt.plot([0, 1], [0, 1], 'k--')
 plt.plot(fpr_keras, tpr_keras, label='(AUC = {:.2f})'.format(auc_keras))
-
 plt.xlabel('False positive rate')
 plt.ylabel('True positive rate')
 plt.title('ROC curve')
