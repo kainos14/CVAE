@@ -1,5 +1,3 @@
-# This source is for the SisFall dataset. We only need to modify the related feature names for other data sets.
-
 import pandas as pd
 import numpy as np
 import os
@@ -37,7 +35,7 @@ from tensorflow.keras.layers import Flatten, Dense, Dropout, BatchNormalization
 from tensorflow.keras.layers import Conv2D, MaxPool2D
 from tensorflow.keras.optimizers import Adam
 
-#Pre-perform Hierarchical Data Balancing procedure
+# Perform a <Hierarchical Data Balancing> procedure before file loading
 features = pd.read_csv("C:/Users/GC/Extracted_Features_org.csv", index_col=0)
 
 from sklearn.preprocessing import LabelEncoder
@@ -45,7 +43,6 @@ le=LabelEncoder()
 features['activity']=le.fit_transform(features['activity'])
 
 # Feature Selection
-
 df_corr=df.corr()
 matrix=df_corr.to_numpy()
 target_row = matrix[-1, :]
@@ -53,9 +50,7 @@ indices_above_threshold = np.where(target_row >= 0.4)[0]
 column_names = features.columns.tolist()
 list0 = features.columns[indices_above_threshold].tolist()
 df_total=features[list0]
-
 df_corr=df_total.corr()
-
 plt.figure(figsize=(20,20))
 sns.set(font_scale=3)
 sns.heatmap(df_corr, annot=True, cbar=False)
@@ -69,6 +64,7 @@ df['ADX_y_acc_mean'] = df['ADX_y_acc_mean'] + noise_factor * np.random.normal(lo
 df['ADX_y_acc_max'] = df['ADX_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['MMA_y_acc_mean'] = df['MMA_y_acc_mean'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['MMA_y_acc_max'] = df['MMA_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
+# This source is for the SisFall dataset. We only need to modify the related feature names for other data sets.
 
 # Noisy Data
 X_train, X_test = train_test_split(df_total, test_size=0.1, random_state=42)
@@ -214,7 +210,6 @@ def vae_loss(inputs, decoded):
     return K.mean(xent_loss + kl_loss)
 
 # timesteps, features
-
 input_x = Input(shape=(timesteps, features), name='InputTimeSeries') 
 
 #intermediate dimension 
