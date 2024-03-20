@@ -64,7 +64,8 @@ df['ADX_y_acc_mean'] = df['ADX_y_acc_mean'] + noise_factor * np.random.normal(lo
 df['ADX_y_acc_max'] = df['ADX_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['MMA_y_acc_mean'] = df['MMA_y_acc_mean'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
 df['MMA_y_acc_max'] = df['MMA_y_acc_max'] + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=num)
-# This source is for the SisFall dataset. We only need to modify the related feature names for other data sets.
+# This source is for the SisFall dataset. 
+# You only need to modify the related feature names to use other datasets.
 
 # Noisy Data
 X_train, X_test = train_test_split(df_total, test_size=0.1, random_state=42)
