@@ -5,7 +5,7 @@
 
 ## Paper Overview
 
-**Abstract**: Globally, every country is seeing an increase in the number and percentage of older people. Due to this reason, there is a growing interest in health issues that could compromise the safety and quality of life for the elderly. Among these health concerns, falls stand out as a significant issue that significantly affects the elderly, and numerous studies have been conducted to address this problem. Nevertheless, gathering data on fall activities and integrating the fall detection solution into wearable devices remains challenging. The fall data collecting problem can be solved by the unsupervised learning method, which requires a complex deep learning model with many parameters, making integrating into wearable devices hard. Building an unsupervised deep learning model with fewer parameters while keeping the equivalent high accuracy is desirable. In this paper, we propose a novel fall detection method using unsupervised learning based on the denoising Long Short Term Memory (LSTM)-based Convolutional Variant Autoencoder (CVAE) model with fewer parameters, maintaining the equivalent accuracy by the proposed data debugging and hierarchical data balancing techniques. Experimental results show that our method can achieve an F1-score of 1.0 while reducing parameters by 25.6 times (resulting in a memory size of 157.65 KB suitable for wearable devices) compared to the state-of-the-art unsupervised deep learning method.
+**Abstract**: As societies age, the issue of falls has become increasingly critical for the health and safety of the elderly. Fall detection in the elderly has traditionally relied on supervised learning methods, which require data on falls, which is difficult to obtain in real situations. Additionally, the complexity of integrating deep learning models into wearable devices for real-time fall detection has been challenging due to limited computational resources. In this paper, we propose a novel fall detection method using unsupervised learning based on a denoising long short term memory (LSTM)-based convolutional variational autoencoder (CVAE) model to solve the problem of lack of fall data. By utilizing the proposed data debugging and hierarchical data balancing techniques, the proposed method achieves an F1 score of 1.0 while reducing the parameter count by 25.6 times compared to the state-of-the-art unsupervised deep learning method. The resulting model occupies only 157.65 KB of memory, making it highly suitable for integration into wearable devices.
 
 ---
 ## Dataset
@@ -26,11 +26,15 @@ If our project is helpful for your research, please consider citing :
 
 ```
 
-@inJournal{XXX,
+@article{yi2024jsen,
   title={Fall Detection of the Elderly Using Denoising LSTM-based Convolutional Variant Autoencoder},
   author={Myung-Kyu Yi, KyungHyun Han, and Seong Oun Hwang},
-  booktitle={IEEE XXX},
-  year={2023}
+  booktitle={IEEE Sensor Journal},
+  volume={},
+  number={},
+  pages={},
+  year={2024}
+  publisher={IEEE}
 }
 
 ```
