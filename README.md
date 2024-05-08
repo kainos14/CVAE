@@ -2,7 +2,9 @@
 
 
 >**This is the official implementation of the paper with the title “Fall Detection of the Elderly Using Denoising LSTM-based Convolutional Variant Autoencoder”by Myung-Kyu Yi, KyungHyun Han, and Seong Oun Hwang**
+>
 >https://ieeexplore.ieee.org/document/10508748
+>
 >DOI: 10.1109/JSEN.2024.3388478
 
 ## Paper Overview
