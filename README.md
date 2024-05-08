@@ -30,16 +30,14 @@ Framework uses Tensorflow 2+, tensorflow_addons, numpy, pandas, matplotlib, scik
 If our project is helpful for your research, please consider citing :
 
 ```
-
 @article{yi2024jsen,
   title={Fall Detection of the Elderly Using Denoising LSTM-based Convolutional Variant Autoencoder},
   author={Myung-Kyu Yi, KyungHyun Han, and Seong Oun Hwang},
-  booktitle={IEEE Sensor Journal},
+  journal={IEEE Sensor Journal},
   volume={},
   number={},
   pages={},
   year={2024}
-
   publisher={IEEE}
 }
 
