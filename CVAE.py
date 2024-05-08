@@ -204,11 +204,17 @@ def sampling(args):
     epsilon = K.random_normal(shape=(batch_size, latent_dim), mean=0., stddev=1.)
     return z_mean + z_log_sigma * epsilon
 
-def vae_loss(inputs, decoded):
-   
-    xent_loss = K.sum(K.binary_crossentropy(inputs, decoded), axis=1)
-    xent_loss = 10 * K.mean(metrics.mean_squared_error(x_, x_decoded_mean_), axis=-1)
-    return K.mean(xent_loss + kl_loss)
+
+def vae_loss(x, x_decoded_mean):
+    # compute the average MSE error, then scale it up, ie. simply sum on all axes
+    reconstruction_loss = K.sum(K.square(x - x_decoded_mean))
+	
+    # compute the KL loss
+    kl_loss = - 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.square(K.exp(z_log_var)), axis=-1)
+	
+    # return the average loss over all 
+    total_loss = K.mean(reconstruction_loss + kl_loss)        
+    return total_loss
 
 # timesteps, features
 input_x = Input(shape=(timesteps, features), name='InputTimeSeries') 
