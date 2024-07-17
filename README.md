@@ -34,9 +34,9 @@ If our project is helpful for your research, please consider citing :
   title={Fall Detection of the Elderly Using Denoising LSTM-based Convolutional Variant Autoencoder},
   author={Myung-Kyu Yi, KyungHyun Han, and Seong Oun Hwang},
   journal={IEEE Sensor Journal},
-  volume={},
-  number={},
-  pages={},
+  volume={24},
+  Issue={11},
+  pages={18556 - 18567},
   year={2024}
   publisher={IEEE}
 }
