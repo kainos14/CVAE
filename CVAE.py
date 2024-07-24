@@ -204,13 +204,12 @@ def sampling(args):
     epsilon = K.random_normal(shape=(batch_size, latent_dim), mean=0., stddev=1.)
     return z_mean + z_log_sigma * epsilon
 
-
 def vae_loss(x, x_decoded_mean):
     # compute the average MSE error, then scale it up, ie. simply sum on all axes
     reconstruction_loss = K.sum(K.square(x - x_decoded_mean))
 	
     # compute the KL loss
-    kl_loss = - 0.5 * K.sum(1 + z_log_var - K.square(z_mean) - K.square(K.exp(z_log_var)), axis=-1)
+    kl_loss = - 0.5 * K.sum(1 + z_log_sigma - K.square(z_mean) - K.square(K.exp(z_log_sigma)), axis=-1)
 	
     # return the average loss over all 
     total_loss = K.mean(reconstruction_loss + kl_loss)        
