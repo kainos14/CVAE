@@ -71,7 +71,7 @@ df['MMA_y_acc_max'] = df['MMA_y_acc_max'] + noise_factor * np.random.normal(loc=
 X_train, X_test = train_test_split(df_total, test_size=0.1, random_state=42)
 X_train.shape, X_test.shape
 
-# Validation data without noisy
+# Noise-free data
 X_train2, X_test2 = train_test_split(No_noise_df, test_size=0.1, random_state=42)
 X_train2.shape, X_test2.shape
 
@@ -249,10 +249,10 @@ model = Model(input_x, decoder1)
 model.compile(optimizer='adam', loss=vae_loss, metrics=['accuracy'])
 model.summary()
 
-history = model.fit(X_train, X_train,
+history = model.fit(X_train, X_train2,
                         shuffle=True,
                         epochs=100,
-                        validation_data =(X_train2, X_train2),                        
+                        validation_split=0.1,                        
                         batch_size=256)
 
 
